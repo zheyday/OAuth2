@@ -1,0 +1,13 @@
+server:
+  port: 9120
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost/seckill?serverTimezone=UTC&characterEncoding=UTF-8&nullCatalogMeansCurrent=true
+    username: root
+    password: 
+#spring:
+#  security:
+#    user:
+#      name: user
+#      password: user

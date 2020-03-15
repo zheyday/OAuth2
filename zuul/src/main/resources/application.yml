@@ -1,0 +1,55 @@
+spring:
+  application:
+    name: zuul
+
+server:
+  port: 9110
+
+#路由配置
+# /eureka-client/**路径都会被转发到eureka-client服务中
+zuul:
+  routes:
+    eureka-client:
+      path: /eureka-client/**
+      sensitiveHeaders:
+      serviceId: eureka-client
+    eureka-client1:
+      path: /eureka-client1/**
+      sensitiveHeaders:
+      serviceId: eureka-client1
+    oauth-server:
+      path: /oauth-server/**
+      sensitiveHeaders:
+        serviceId: eureka-client
+    #  忽略路由
+#  ignored-patterns:  /**/v2/api-docs
+swagger:
+  title: SpringCloud项目开发文档
+  description: 秒杀/12306
+  version: 1.0
+#  terms-of-service-url: ''
+
+#认证服务器地址
+oauth-server: http://localhost:9120/oauth-server
+security:
+  oauth2:
+    #   和认证服务器中的client设置对应
+    client:
+      client-id: zuul
+      client-secret: secret
+#	   获取令牌地址
+      access-token-uri: ${oauth-server}/oauth/token
+#      认证地址
+      user-authorization-uri: ${oauth-server}/oauth/authorize
+    resource:
+#      两种方式进行令牌校验
+#      一、
+#      user-info-uri: ${oauth-server}/oauth2_token/current
+#      prefer-token-info: false
+#      二、访问授权服务器获取公钥 解析令牌
+      jwt:
+        key-uri: ${oauth-server}/oauth/token_key
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/

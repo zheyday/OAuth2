@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.6.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>zcs</groupId>
+    <artifactId>cloudOne</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+
+    <modules>
+        <module>zuul</module>
+        <module>commons</module>
+        <module>eureka-client</module>
+        <module>oauth-server</module>
+<<<<<<< HEAD
+        <module>eureka-client1</module>
+
+<!--        <module>eureka-server-single</module>-->
+<!--        <module>config-server</module>-->
+<!--        <module>config-client-template</module>-->
+=======
+>>>>>>> oauth
+    </modules>
+
+    <!--    统一版本管理-->
+    <properties>
+        <openfeign.version>2.1.3.RELEASE</openfeign.version>
+        <netflix-eureka-client.version>2.1.3.RELEASE</netflix-eureka-client.version>
+        <spring-cloud-starter-oauth2.version>2.1.4.RELEASE</spring-cloud-starter-oauth2.version>
+
+        <mybatis-plus-boot-starter.version>3.2.0</mybatis-plus-boot-starter.version>
+        <mysql-connector-java.version>8.0.13</mysql-connector-java.version>
+        <freemarker.version>2.3.29</freemarker.version>
+    </properties>
+
+    <!--    只声明 子模块不引入-->
+    <dependencyManagement>
+        <dependencies>
+
+            <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-openfeign -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-openfeign</artifactId>
+                <version>${openfeign.version}</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+                <version>${netflix-eureka-client.version}</version>
+            </dependency>
+
+            <!--            mybatis-plus -->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis-plus-boot-starter.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-generator</artifactId>
+                <version>${mybatis-plus-boot-starter.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.freemarker</groupId>
+                <artifactId>freemarker</artifactId>
+                <version>${freemarker.version}</version>
+            </dependency>
+            <!--            end-->
+
+
+        </dependencies>
+    </dependencyManagement>
+
+<!--    ```````````````````````````````````````分界线``````````````````````````````````````````````-->
+    <!--    子模块会引入-->
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-oauth2</artifactId>
+            <version>${spring-cloud-starter-oauth2.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql-connector-java.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+</project>
